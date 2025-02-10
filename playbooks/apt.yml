@@ -1,0 +1,13 @@
+- name: Playbook1
+  hosts: "*"
+  become: yes # Run as root
+  tasks:
+  - name: apt
+    apt:
+      update_cache: yes
+      upgrade: 'yes'
+      cache_valid_time: 3600
+      autoremove: 'yes'
+      autoclean: 'yes'
+      state: 'latest'
+      allow_unauthenticated: 'no'

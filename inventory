@@ -1,0 +1,10 @@
+[homelab]
+192.168.0.101
+#192.168.0.202 #NOK
+192.168.0.102 #OK
+192.168.0.212
+
+[homelab:vars]
+ansible_ssh_user=sidor
+ansible_ssh_pass=sidor
+ansible_become_pass=sidor
