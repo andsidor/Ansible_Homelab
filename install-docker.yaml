@@ -1,0 +1,54 @@
+---
+- hosts: homelab
+  become: yes
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - python3-setuptools
+      - virtualenv
+
+  tasks:
+  - name: Install required packages for docker
+    apt:
+      pkg: "{{ packages }}"
+      state: present
+      update_cache: yes
+
+  - name: Add Docker GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add Docker repository
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+      state: present
+      update_cache: yes
+
+  - name: Install Docker CE
+    apt:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      state: present
+
+  - name: Start and enable docker service
+    service:
+      name: docker
+      state: started
+      enabled: yes
+
+  - name: Install docker module for python
+    pip:
+      name: docker
+      state: present
+
+  - name: Install docker-compose module for python
+    pip:
+      name: docker-compose
+      state: present

@@ -6,4 +6,4 @@
 
 ## Training materials:
 
-    - https://github.com/christianlempa/videos/tree/main/ansible-tutorial
+    - https://github.com/christianlempa/videos/tree/main/ansible-tutorial   
