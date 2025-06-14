@@ -16,11 +16,10 @@
   - name: Reboot
     reboot:
 
+      #  - name: Disable SWAP
 
-  - name: Disable SWAP
-
-    shell: |
-      swap -a
+      ##   shell: |
+      #     swap -a
 
   - name: Disable SWAP in fstab
     replace:
